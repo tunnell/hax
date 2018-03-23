@@ -398,11 +398,11 @@ def load_single_dataset(run_id, treemakers, preselection=None, force_reload=Fals
 
     # Apply the unblinding selection if required. Normally this is already done by minitrees.load, but perhaps someone calls
     # load_single_dataset_directly.
-    if (hax.unblinding.unblinding_selection not in preselection and
-        ('Corrections' in treemakers or
-         hax.treemakers.corrections.Corrections in treemakers) and
-            hax.unblinding.is_blind(run_id)):
-        preselection = [hax.unblinding.unblinding_selection] + preselection
+    #if (hax.unblinding.unblinding_selection not in preselection and
+    #    ('Corrections' in treemakers or
+    #     hax.treemakers.corrections.Corrections in treemakers) and
+    #        hax.unblinding.is_blind(run_id)):
+    #    preselection = [hax.unblinding.unblinding_selection] + preselection
 
     # Apply pre-selection cuts before moving on to the next dataset
     for ps in preselection:
