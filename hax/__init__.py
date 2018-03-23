@@ -6,7 +6,7 @@ import socket
 import numba  # flake8: noqa: F401
 from . import misc, minitrees, paxroot, pmt_plot, raw_data, runs, utils, treemakers, data_extractor, slow_control, \
     trigger_data, ipython, recorrect, unblinding  # flake8: noqa: F401
-__version__ = '2.3.3'
+__version__ = '2.4.0'
 
 
 # Stitch the package together
@@ -61,7 +61,6 @@ def init(filename=None, **kwargs):
     # Override with kwargs
     config.update(kwargs)
 
-
     # Convert potential 'raw_data_local_path' entry for backwards compatibility
     if "raw_data_local_path" in config and isinstance(config["raw_data_local_path"], str):
         config["raw_data_local_path"] = [config["raw_data_local_path"]]
@@ -79,3 +78,6 @@ def init(filename=None, **kwargs):
                 "Outside an analysis facility you must explicitly set pax_version_policy = 'loose', "
                 "to acknowledge you are not getting any version consistency checks."
             )
+
+    # Setup unblinding selection
+    unblinding.make_unblinding_selection()
